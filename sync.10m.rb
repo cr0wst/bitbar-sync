@@ -32,7 +32,7 @@ begin
       next if IGNORED_FILES.include? file
       puts file
       puts '-- Go|href=' + build_link_string(file)
-      puts "-- Copy Link|bash=#{$0} param1=copy param2=#{build_link_string(file)} terminal=false"
+      puts "-- Copy Link|bash=#{$0} param1=copy param2='#{build_link_string(file)}' terminal=false"
       puts "-- Delete|bash=#{$0} param1=delete param2='#{file}' terminal=false refresh=true"
     end
   end
