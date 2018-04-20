@@ -13,6 +13,7 @@ ignored_files:
 rsync:
 # Username to be used with rsync.
   user: 'deployer'
+
 # Server to be used with rsync.
   server: 'deploy.example.com'
 
