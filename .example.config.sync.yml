@@ -1,0 +1,23 @@
+# Directory where your shared files will be.
+screenshot_dir: '/Users/demo/Screenshots/'
+
+# URL to prefix your files with when copying the URL to your clipboard.
+link_prefix: 'https://share.example.com/'
+
+# Files that should be ignored in the BitBar list.
+ignored_files:
+  - .
+  - ..
+  - .DS_Store
+
+rsync:
+# Username to be used with rsync.
+  user: 'deployer'
+# Server to be used with rsync.
+  server: 'deploy.example.com'
+
+# Remote folder which will be synced.
+  folder: '/var/www/share.example.com/public_html'
+
+# Path to terminal-notifier if you wish to enable notifications.
+terminal_notifier_path: '/usr/local/bin/terminal-notifier'

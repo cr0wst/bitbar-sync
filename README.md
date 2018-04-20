@@ -6,18 +6,23 @@ Originally created to handle grabbing screenshots and sharing them with others.
 ## Installation
 In order to get notifications you'll need to install [terminal-notifier](https://github.com/julienXX/terminal-notifier).
 
-Modify the configuration variables in `sync.10m.rb`:
-- `SCREENSHOT_DIRECTORY` - The directory on your computer which houses your screenshots and shared files. Include trailing slash.
-- `LINK_PREFIX` - The URI to your shared folder on your server. Include trailing slash.
-- `IGNORED_FILES = %w(. .. .DS_Store)` - Files which you'd like to ignore when listing.
-- `RSYNC_USER` - The username for rsync to your server.
-- `RSYNC_SERVER` - The address for rsync to your server.
-- `RSYNC_FOLDER` - The folder on your server to rsync with your local directory.
-- `TERMINAL_NOTIFIER_PATH` - The path to [terminal-notifier](https://github.com/julienXX/terminal-notifier).
+First, clone or copy the repository contents to your computer.
 
-You can modify the name of the file to indicate how often you would like BitBar to run it.
+Second, copy `.example.config.sync.yml` into the `plugin` directory as `.config.sync.yml`
+```bash
+cp .example.config.sync.yml plugin/.config.sync.yml
+```
 
-You will need to copy it into your BitBar plugins directory and `chmod +x` it.
+Third, open the file in your favorite text editor and define the configuration variables.
+
+Fouth, copy the contents of the `plugin` directory to your BitBar plugin folder.  Alternatively, you can define a symbolic link.
+```bash
+ln -s ~/Repos/bitbar-sync/plugin/* .
+ln -s ~/Repos/bitbar-sync/plugin/.config.sync.yml .
+```
+
+You can modify the name of `sync.10m.rb` to indicate how often you would like BitBar to run it.
+
 ### Rsync Setup
 In order to setup rsync you'll need to make sure you have an SSH key and configuration setup on your Mac.
 

@@ -1,20 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'uri'
+require 'yaml'
+CONFIG = YAML.load_file(File.expand_path(File.dirname(__FILE__)) + '/.config.sync.yml')
 
-# brew install terminal-notifier to get notifications
-#
-# Define the following variables:
-SCREENSHOT_DIRECTORY = '/Users/dummy/Screenshots/'
-LINK_PREFIX = 'https://share.example.com/'
+SCREENSHOT_DIRECTORY = CONFIG['screenshot_dir']
+LINK_PREFIX = CONFIG['link_prefix']
 
 # Add files here separated by spaces.
-IGNORED_FILES = %w(. .. .DS_Store)
+IGNORED_FILES = CONFIG['ignored_files']
 
 # Setup an .ssh/config for this user.
-RSYNC_USER = 'deployer'
-RSYNC_SERVER = 'deploy.example.com'
-RSYNC_FOLDER = '/var/www/share.example.com/public_html'
+RSYNC_USER = CONFIG['rsync']['user']
+RSYNC_SERVER = CONFIG['rsync']['server']
+RSYNC_FOLDER = CONFIG['rsync']['folder']
 
 # Path to terminal-notifier if installed /usr/local/bin/terminal-notifier
 TERMINAL_NOTIFIER_PATH = ''
