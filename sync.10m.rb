@@ -25,8 +25,8 @@ begin
   def list_files
     puts 'Share'
     puts '---'
-    puts "Capture Screenshot|bash=#{$0} param1=capture terminal=false"
-    puts "Sync Directory|bash=#{$0} param1=sync terminal=false"
+    puts "Capture Screenshot|bash=#{$0} param1=capture terminal=false refresh=true"
+    puts "Sync Directory|bash=#{$0} param1=sync terminal=false refresh=true"
     puts '---'
     Dir.foreach SCREENSHOT_DIRECTORY do |file|
       next if IGNORED_FILES.include? file
@@ -71,7 +71,6 @@ begin
     capture_screenshot
   when 'sync'
     sync_directory
-    list_files
   else
     list_files
   end
