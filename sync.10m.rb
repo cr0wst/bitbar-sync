@@ -16,6 +16,8 @@ RSYNC_USER = 'deployer'
 RSYNC_SERVER = 'deploy.example.com'
 RSYNC_FOLDER = '/var/www/share.example.com/public_html'
 
+# Path to terminal-notifier if installed /usr/local/bin/terminal-notifier
+TERMINAL_NOTIFIER_PATH = ''
 # Copy this script into your BitBar plugin directory and chmod +x it.
 
 # Do not edit below
@@ -35,15 +37,19 @@ begin
   end
 
   def capture_screenshot
-    time = Time.new;
+    time = Time.new
     timestamp = time.strftime("%Y-%m-%d at %-H.%M.%S %p")
     file_name = 'Screen Shot ' + timestamp + '.png'
     file_path = SCREENSHOT_DIRECTORY + file_name
     %x(screencapture -i "#{file_path}")
     url = build_link_string(file_name)
     copy_url url
-    %x(terminal-notifier -message "URL copied to clipboard" -title "Screenshot Uploaded" -appIcon "#{url}" -contentImage "#{url}")
     sync_directory
+    notify_user url unless TERMINAL_NOTIFIER_PATH.empty?
+  end
+
+  def notify_user url
+    %x(#{TERMINAL_NOTIFIER_PATH} -message "URL copied to clipboard" -title "Screenshot Uploaded" -appIcon "#{url}" -contentImage "#{url}")
   end
 
   def copy_url url

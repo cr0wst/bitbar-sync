@@ -13,6 +13,7 @@ Modify the configuration variables in `sync.10m.rb`:
 - `RSYNC_USER` - The username for rsync to your server.
 - `RSYNC_SERVER` - The address for rsync to your server.
 - `RSYNC_FOLDER` - The folder on your server to rsync with your local directory.
+- `TERMINAL_NOTIFIER_PATH` - The path to [terminal-notifier](https://github.com/julienXX/terminal-notifier).
 
 You can modify the name of the file to indicate how often you would like BitBar to run it.
 
