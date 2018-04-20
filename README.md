@@ -1,6 +1,6 @@
 # BitBar Sync
 Script for syncing a directory with a remote server that utilizes BitBar to display shared files.
-
+![See it in action](screenshot.png)
 Originally created to handle grabbing screenshots and sharing them with others.
 
 ## Installation
