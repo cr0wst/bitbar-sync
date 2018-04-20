@@ -33,6 +33,7 @@ begin
       puts file
       puts '-- Go|href=' + build_link_string(file)
       puts "-- Copy Link|bash=#{$0} param1=copy param2=#{build_link_string(file)} terminal=false"
+      puts "-- Delete|bash=#{$0} param1=delete param2='#{file}' terminal=false refresh=true"
     end
   end
 
@@ -64,6 +65,11 @@ begin
     %x(rsync -a --delete --exclude index.html #{SCREENSHOT_DIRECTORY} #{RSYNC_USER}@#{RSYNC_SERVER}:#{RSYNC_FOLDER})
   end
 
+  def delete_file file
+    File.delete(SCREENSHOT_DIRECTORY + file)
+    sync_directory
+  end
+
   case ARGV[0]
   when 'copy'
     copy_url ARGV[1]
@@ -71,6 +77,8 @@ begin
     capture_screenshot
   when 'sync'
     sync_directory
+  when 'delete'
+    delete_file ARGV[1]
   else
     list_files
   end
