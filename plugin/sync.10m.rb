@@ -16,7 +16,7 @@ RSYNC_SERVER = CONFIG['rsync']['server']
 RSYNC_FOLDER = CONFIG['rsync']['folder']
 
 # Path to terminal-notifier if installed /usr/local/bin/terminal-notifier
-TERMINAL_NOTIFIER_PATH = ''
+TERMINAL_NOTIFIER_PATH = CONFIG['terminal_notifier_path']
 # Copy this script into your BitBar plugin directory and chmod +x it.
 
 # Do not edit below
